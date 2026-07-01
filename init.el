@@ -30,6 +30,7 @@
 
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives '("gnu"   . "http://elpa.gnu.org/packages/") t)
 ; (package-refresh-contents)
 (package-initialize)
 
@@ -54,10 +55,11 @@
      "45631691477ddee3df12013e718689dafa607771e7fd37ebc6c6eb9529a8ede5"
      default))
  '(package-selected-packages
-   '(ace-window amx company counsel counsel-projectile flycheck
+   '(ace-window amx company counsel counsel-projectile dashboard flycheck
 		google-this graphviz-dot-mode lsp-ivy lsp-mode
 		lsp-treemacs magit mwim org-re-reveal projectile
-		smart-mode-line treemacs treemacs-projectile undo-tree)))
+		rustic smart-mode-line treemacs treemacs-projectile
+		undo-tree)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

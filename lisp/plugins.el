@@ -4,6 +4,11 @@
 (use-package counsel
   :ensure t)
 
+(use-package dashboard
+  :ensure t
+  :config
+  (dashboard-setup-startup-hook))
+
 (use-package ivy
   :ensure t
   :init
@@ -58,23 +63,20 @@
   :bind
   (("C-j C-SPC" . avy-goto-char-2)))
 
-(use-package company
-  :ensure t
-  :init (global-company-mode)
-  :config
-  (setq company-minimum-prefix-length 1) ; 只需敲 1 个字母就开始进行自动补全
-  (setq company-tooltip-align-annotations t)
-  (setq company-idle-delay 0.0)
-  (setq company-show-numbers t) ;; 给选项编号 (按快捷键 M-1、M-2 等等来进行选择).
-  (setq company-selection-wrap-around t)
-  (setq company-transformers '(company-sort-by-occurrence))) ; 根据选择的频率进行排序，读者如果不喜欢可以去掉
-
 (use-package flycheck
   :ensure t
   :config
   (setq truncate-lines nil) ; 如果单行信息很长会自动换行
   :hook
   (prog-mode . flycheck-mode))
+
+(use-package rustic
+  :ensure t
+  :config
+  (setq rustic-format-on-save t)
+  (setq rustic-lsp-client 'lsp-mode)
+  :custom
+  (rustic-cargo-use-last-stored-arguments t))
 
 (use-package lsp-mode
   :ensure t
@@ -86,7 +88,7 @@
   (lsp-mode . lsp-enable-which-key-integration) ; which-key integration
   :commands (lsp lsp-deferred)
   :config
-  (setq lsp-completion-provider :none) ;; 阻止 lsp 重新设置 company-backend 而覆盖我们 yasnippet 的设置
+   (setq lsp-completion-provider :capf) ;; 使用 lsp 提供的 capf 作为 company 补全后端
   (setq lsp-headerline-breadcrumb-enable t)
   :bind
   ("C-c l s" . lsp-ivy-workspace-symbol)) ;; 可快速搜索工作区内的符号（类名、函数名、变量名等）
