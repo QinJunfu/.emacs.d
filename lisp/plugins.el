@@ -126,7 +126,6 @@
   :init
   (google-this-mode))
 
-;; 1. 安装与基础设置
 (use-package treemacs
   :ensure t
   :defer t
@@ -135,7 +134,6 @@
   (setq treemacs-width 40)
   
   ;; 2. 增强视觉：启用图标和 Git 状态
-  ;(treemacs-load-theme "all-the-icons")
   (treemacs-git-mode 'simple)
   
   ;; 3. 高级功能：代码符号跟随和项目跟随
