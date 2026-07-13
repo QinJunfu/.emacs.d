@@ -126,6 +126,27 @@
   :init
   (google-this-mode))
 
+;; 1. 安装与基础设置
+(use-package treemacs
+  :ensure t
+  :defer t
+  :config
+  ;; 设置侧边栏宽度为 25 个字符
+  (setq treemacs-width 40)
+  
+  ;; 2. 增强视觉：启用图标和 Git 状态
+  ;(treemacs-load-theme "all-the-icons")
+  (treemacs-git-mode 'simple)
+  
+  ;; 3. 高级功能：代码符号跟随和项目跟随
+  (treemacs-tag-follow-mode t)
+  (treemacs-project-follow-mode t)
+
+  ;; 4. 绑定快捷键
+  :bind
+  (("M-0" . treemacs-select-window)        ; 快速跳回 Treemacs 窗口
+   ("<f8>" . treemacs)))                  ; 按 F8 打开/关闭侧边栏
+
 (provide 'plugins)
 
 ;;; plugins.el ends here
