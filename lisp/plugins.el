@@ -1,14 +1,8 @@
 ;;; plugins.el --- Plugins' configuration via use-package
+;;; Commentary:
 ;;; Code:
 
-(use-package counsel
-  :ensure t)
-
-(use-package dashboard
-  :ensure t
-  :config
-  (dashboard-setup-startup-hook))
-
+;; ============ 补全与搜索框架 ============
 (use-package ivy
   :ensure t
   :init
@@ -30,25 +24,40 @@
    :map minibuffer-local-map
    ("C-r" . counsel-minibuffer-history)))
 
+(use-package counsel
+  :ensure t)
+
 (use-package amx
   :ensure t
   :init (amx-mode))
 
-(use-package ace-window
-  :ensure t
-  :bind (("C-x o" . 'ace-window)))
-
+;; ============ 编辑增强 ============
 (use-package mwim
   :ensure t
   :bind
   ("C-a" . mwim-beginning-of-code-or-line)
   ("C-e" . mwim-end-of-code-or-line))
 
+(use-package ace-window
+  :ensure t
+  :bind (("C-x o" . 'ace-window)))
+
+(use-package avy
+  :ensure t
+  :bind
+  (("C-j C-SPC" . avy-goto-char-2)))
+
 (use-package undo-tree
   :ensure t
   :init (global-undo-tree-mode)
   :custom
   (undo-tree-auto-save-history nil))
+
+;; ============ 界面与显示 ============
+(use-package dashboard
+  :ensure t
+  :config
+  (dashboard-setup-startup-hook))
 
 (use-package smart-mode-line
   :ensure t
@@ -58,11 +67,44 @@
   :ensure t
   :init (which-key-mode))
 
-(use-package avy
+(use-package treemacs
   :ensure t
-  :bind
-  (("C-j C-SPC" . avy-goto-char-2)))
+  :defer t
+  :config
+  ;; 设置侧边栏宽度为 25 个字符
+  (setq treemacs-width 40)
 
+  ;; 2. 增强视觉：启用图标和 Git 状态
+  (treemacs-git-mode 'simple)
+
+  ;; 3. 高级功能：代码符号跟随和项目跟随
+  (treemacs-tag-follow-mode t)
+  (treemacs-project-follow-mode t)
+
+  ;; 4. 绑定快捷键
+  :bind
+  (("M-0" . treemacs-select-window)        ; 快速跳回 Treemacs 窗口
+   ("<f8>" . treemacs)))                  ; 按 F8 打开/关闭侧边栏
+
+;; ============ 项目管理 ============
+(use-package projectile
+  :ensure t
+  :bind (("C-c p" . projectile-command-map))
+  :config
+  (setq projectile-mode-line "Projectile")
+  (setq projectile-track-known-projects-automatically nil))
+
+(use-package counsel-projectile
+  :ensure t
+  :after (projectile)
+  :init (counsel-projectile-mode))
+
+;; ============ 版本控制 ============
+; Use C-x g to call
+(use-package magit
+  :ensure t)
+
+;; ============ 代码检查 ============
 (use-package flycheck
   :ensure t
   :config
@@ -70,14 +112,7 @@
   :hook
   (prog-mode . flycheck-mode))
 
-(use-package rustic
-  :ensure t
-  :config
-  (setq rustic-format-on-save t)
-  (setq rustic-lsp-client 'lsp-mode)
-  :custom
-  (rustic-cargo-use-last-stored-arguments t))
-
+;; ============ 语言服务 LSP ============
 (use-package lsp-mode
   :ensure t
   :init
@@ -104,46 +139,20 @@
   :ensure t
   :after (lsp-mode))
 
-(use-package projectile
+(use-package rustic
   :ensure t
-  :bind (("C-c p" . projectile-command-map))
   :config
-  (setq projectile-mode-line "Projectile")
-  (setq projectile-track-known-projects-automatically nil))
+  (setq rustic-format-on-save t)
+  (setq rustic-lsp-client 'lsp-mode)
+  :custom
+  (rustic-cargo-use-last-stored-arguments t))
 
-(use-package counsel-projectile
-  :ensure t
-  :after (projectile)
-  :init (counsel-projectile-mode))
-
-; Use C-x g to call
-(use-package magit
-  :ensure t)
-
+;; ============ 开发工具 ============
 ; Use C-c / t to call
 (use-package google-this
   :ensure t
   :init
   (google-this-mode))
-
-(use-package treemacs
-  :ensure t
-  :defer t
-  :config
-  ;; 设置侧边栏宽度为 25 个字符
-  (setq treemacs-width 40)
-  
-  ;; 2. 增强视觉：启用图标和 Git 状态
-  (treemacs-git-mode 'simple)
-  
-  ;; 3. 高级功能：代码符号跟随和项目跟随
-  (treemacs-tag-follow-mode t)
-  (treemacs-project-follow-mode t)
-
-  ;; 4. 绑定快捷键
-  :bind
-  (("M-0" . treemacs-select-window)        ; 快速跳回 Treemacs 窗口
-   ("<f8>" . treemacs)))                  ; 按 F8 打开/关闭侧边栏
 
 (use-package docker
   :ensure t
