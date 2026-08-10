@@ -57,7 +57,13 @@
 (use-package dashboard
   :ensure t
   :config
-  (dashboard-setup-startup-hook))
+  (dashboard-setup-startup-hook)
+  (setq dashboard-items '((recents . 10)
+                          (projects . 10)
+			  (bookmarks . 10)
+			  (agenda . 10)))
+  (setq dashboard-projects-backend 'projectile)
+  (setq dashboard-projects-show-base t))
 
 (use-package smart-mode-line
   :ensure t
@@ -92,7 +98,7 @@
   :bind (("C-c p" . projectile-command-map))
   :config
   (setq projectile-mode-line "Projectile")
-  (setq projectile-track-known-projects-automatically nil))
+  (setq projectile-track-known-projects-automatically t))
 
 (use-package counsel-projectile
   :ensure t
