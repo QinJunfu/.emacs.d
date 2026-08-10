@@ -147,6 +147,11 @@
   :custom
   (rustic-cargo-use-last-stored-arguments t))
 
+;; ============ Nix ============
+(use-package nix-mode
+  :ensure t
+  :mode ("\\.nix\\'" "\\.nix.in\\'"))
+
 ;; ============ 开发工具 ============
 ; Use C-c / t to call
 (use-package google-this
