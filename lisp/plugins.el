@@ -145,6 +145,10 @@
   (("M-0" . treemacs-select-window)        ; 快速跳回 Treemacs 窗口
    ("<f8>" . treemacs)))                  ; 按 F8 打开/关闭侧边栏
 
+(use-package docker
+  :ensure t
+  :bind ("C-c d" . docker))
+
 (provide 'plugins)
 
 ;;; plugins.el ends here
