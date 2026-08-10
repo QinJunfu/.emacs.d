@@ -2,6 +2,10 @@
 
 ;;; Code:
 
+;; 0. 日程与任务文件
+(setq org-directory "~/org/")
+(setq org-agenda-files '("~/org/tasks.org"))
+
 ;; 1. 告诉 Org Babel 加载哪些语言
 (org-babel-do-load-languages
  'org-babel-load-languages
@@ -32,6 +36,16 @@
   (setq graphviz-dot-indent-width 4)
   :hook
   (graphviz-dot-mode . flycheck-mode))
+
+(use-package org-super-agenda
+  :ensure t
+  :config
+  (org-super-agenda-mode 1)
+  (setq org-super-agenda-groups
+	`((:name "今天" :time-grid t)
+	  (:name "本周截止" :deadline (before ,(format-time-string "%Y-%m-%d"
+							       (time-add (current-time) (* 7 86400)))))
+	  (:name "待办" :todo "TODO"))))
 
 (provide 'init-org)
 
