@@ -125,14 +125,24 @@
   ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
   (setq lsp-keymap-prefix "C-c l"
 	lsp-file-watch-threshold 500)
-  :hook 
-  (lsp-mode . lsp-enable-which-key-integration) ; which-key integration
+  :hook
+  ((c-mode . lsp-deferred)
+   (c++-mode . lsp-deferred)
+   (lsp-mode . lsp-enable-which-key-integration)) ; which-key integration
   :commands (lsp lsp-deferred)
   :config
    (setq lsp-completion-provider :capf) ;; 使用 lsp 提供的 capf 作为 company 补全后端
   (setq lsp-headerline-breadcrumb-enable t)
   :bind
   ("C-c l s" . lsp-ivy-workspace-symbol)) ;; 可快速搜索工作区内的符号（类名、函数名、变量名等）
+
+(use-package company
+  :ensure t
+  :config
+  (setq company-idle-delay 0.2
+        company-minimum-prefix-length 1
+        company-tooltip-align-annotations t)
+  (global-company-mode 1))
 
 (use-package lsp-ui
   :ensure t
