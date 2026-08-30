@@ -1,4 +1,4 @@
-;;; plugins.el --- Plugins' configuration via use-package
+;;; plugins.el --- Plugins' configuration via use-package  -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

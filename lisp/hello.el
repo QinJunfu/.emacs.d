@@ -1,4 +1,4 @@
-;;; hello -- Echo "Hello, world!"
+;;; hello.el --- Echo "Hello, world!"  -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

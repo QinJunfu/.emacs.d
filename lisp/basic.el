@@ -1,4 +1,4 @@
-;;; basic -- Basic settings for emacs
+;;; basic.el --- Basic settings for emacs  -*- lexical-binding: t; -*-
 
 ;;; Code:
 

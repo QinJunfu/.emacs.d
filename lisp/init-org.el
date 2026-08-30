@@ -1,4 +1,4 @@
-;;; init-org.el --- orgmode configuration
+;;; init-org.el --- orgmode configuration  -*- lexical-binding: t; -*-
 
 ;;; Code:
 
