@@ -4,3 +4,4 @@
 !lisp/**
 !lisp/
 !.gitignore
+!README.md
