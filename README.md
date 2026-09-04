@@ -32,6 +32,55 @@ git clone https://github.com/prtysil/emacs.d.git ~/.emacs.d
 
 启动 Emacs 后，插件会按配置安装。首次安装可能需要一些时间。
 
+## macOS Emacs daemon（fish）
+
+仓库提供了一个 macOS 专用安装脚本。它使用 Homebrew ARM 默认位置的
+`/opt/homebrew/bin/emacs`，以 `main` 名称启动前台 Emacs daemon，并在登录后自动运行。
+请先安装 Homebrew Emacs 和 fish，然后在本仓库根目录执行：
+
+```fish
+fish scripts/setup-macos-emacs-daemon.fish
+```
+
+脚本会创建以下用户级配置：
+
+- `~/Library/LaunchAgents/user.emacs.daemon.plist`：登录时启动并保持 daemon 运行
+- `~/.config/fish/functions/e.fish`：在当前终端打开 Emacs 客户端
+- `~/.config/fish/functions/eg.fish`：创建图形 Emacs 客户端窗口
+
+重新打开 fish 终端后可使用：
+
+```fish
+e README.md       # 在当前终端编辑
+eg init.el        # 创建图形 Emacs 窗口
+```
+
+fish 会自动加载这些函数；若要立即在当前 shell 使用，执行：
+
+```fish
+source ~/.config/fish/functions/e.fish
+source ~/.config/fish/functions/eg.fish
+```
+
+可用以下命令检查服务和日志：
+
+```fish
+launchctl print gui/(id -u)/user.emacs.daemon
+emacsclient -s main --eval '(emacs-pid)'
+tail -n 50 ~/Library/Logs/emacs-daemon-error.log
+```
+
+若不再需要该服务，先卸载它，再删除脚本生成的文件：
+
+```fish
+launchctl bootout gui/(id -u)/user.emacs.daemon
+rm ~/Library/LaunchAgents/user.emacs.daemon.plist
+rm ~/.config/fish/functions/e.fish ~/.config/fish/functions/eg.fish
+```
+
+安装脚本可以重复运行。为避免覆盖个人配置，如果同名 LaunchAgent 或 fish 函数
+不是该脚本创建的，它会停止并提示你手动处理。
+
 ## 系统工具
 
 部分功能依赖 Emacs 之外的程序。按需安装：
@@ -79,4 +128,3 @@ touch ~/org/tasks.org
 cd ~/.emacs.d
 git pull
 ```
-
