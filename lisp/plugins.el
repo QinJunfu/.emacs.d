@@ -119,6 +119,17 @@
   (prog-mode . flycheck-mode))
 
 ;; ============ 语言服务 LSP ============
+(use-package lsp-metals
+  :ensure t
+  :defer t)
+
+(use-package scala-mode
+  :ensure t
+  :mode ("\\.scala\\'" "build\\.sc\\'")
+  :hook (scala-mode . lsp-deferred)
+  :config
+  (require 'lsp-metals))
+
 (use-package lsp-mode
   :ensure t
   :init
