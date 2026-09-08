@@ -226,6 +226,12 @@
                  (display-buffer-reuse-window display-buffer-at-bottom)
                  (window-height . 0.3))))
 
+(use-package gnu-elpa-keyring-update
+  :ensure t)
+
+(use-package vlf
+  :ensure t)
+
 (provide 'plugins)
 
 ;;; plugins.el ends here
