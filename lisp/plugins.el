@@ -61,10 +61,10 @@
         (expand-file-name "assets/marivector.png" user-emacs-directory)) ; This picture come from: https://github.com/snackon/Witchmacs
   (setq dashboard-image-banner-max-width 300)
   (dashboard-setup-startup-hook)
-  (setq dashboard-items '((recents . 10)
-                          (projects . 10)
-			  (bookmarks . 10)
-			  (agenda . 10)))
+  (setq dashboard-items '((recents . 5)
+                          (projects . 5)
+			  (bookmarks . 5)
+			  (agenda . 5)))
   (setq dashboard-projects-backend 'projectile)
   (setq dashboard-projects-show-base t))
 
