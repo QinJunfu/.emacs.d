@@ -205,6 +205,21 @@
   :ensure t
   :bind ("C-c d" . docker))
 
+(use-package vterm
+  :ensure t)
+
+(use-package vterm-toggle
+  :ensure t
+  :after vterm
+  :bind (("C-c t" . vterm-toggle))
+  :config
+  ;; 设置在底部弹窗显示终端
+  (setq vterm-toggle-fullscreen-p nil)
+  (add-to-list 'display-buffer-alist
+               '("\\*vterm\\*"
+                 (display-buffer-reuse-window display-buffer-at-bottom)
+                 (window-height . 0.3))))
+
 (provide 'plugins)
 
 ;;; plugins.el ends here

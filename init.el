@@ -59,7 +59,7 @@
 	       lsp-ivy lsp-metals lsp-treemacs lsp-ui magit
 	       monokai-theme mood-line mwim nix-mode org-re-reveal
 	       org-super-agenda reformatter rustic smart-mode-line tp
-	       treemacs-projectile undo-tree)))
+	       treemacs-projectile undo-tree vterm vterm-toggle)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
