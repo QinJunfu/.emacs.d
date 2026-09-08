@@ -54,7 +54,7 @@
      "45631691477ddee3df12013e718689dafa607771e7fd37ebc6c6eb9529a8ede5"
      default))
  '(package-selected-packages
-   '(aidermacs amx company counsel-projectile dashboard docker
+   '(aidermacs amx company counsel-projectile dashboard dirvish docker
 	       doom-modeline flycheck google-this graphviz-dot-mode
 	       lsp-ivy lsp-metals lsp-treemacs lsp-ui magit
 	       monokai-theme mood-line mwim nix-mode org-re-reveal

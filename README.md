@@ -92,11 +92,13 @@ rm ~/.config/fish/functions/e.fish ~/.config/fish/functions/eg.fish
 - Graphviz：Org Babel 的 `dot` 支持
 - Docker CLI/服务：`docker` 插件
 - Nix：`nix-mode` 及 Nix 项目开发
+- vips: dirvish 显示图片依赖
+- ffmpegthumbnailer: dirvish 视频依赖
 
 例如 Arch Linux 可以按需安装常用工具：
 
 ```bash
-sudo pacman -S git ripgrep graphviz docker clang python rust rust-analyzer
+sudo pacman -S git ripgrep graphviz docker clang python rust rust-analyzer vips ffmpegthumbnailer
 ```
 
 工具名称和包名可能随发行版不同，请以目标系统的软件仓库为准。

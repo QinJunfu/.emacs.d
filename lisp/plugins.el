@@ -89,18 +89,24 @@
   :config
   ;; 设置侧边栏宽度为 25 个字符
   (setq treemacs-width 40)
-
   ;; 2. 增强视觉：启用图标和 Git 状态
   (treemacs-git-mode 'simple)
-
   ;; 3. 高级功能：代码符号跟随和项目跟随
   (treemacs-tag-follow-mode t)
   (treemacs-project-follow-mode t)
-
   ;; 4. 绑定快捷键
   :bind
   (("M-0" . treemacs-select-window)        ; 快速跳回 Treemacs 窗口
    ("<f8>" . treemacs)))                  ; 按 F8 打开/关闭侧边栏
+
+(use-package dirvish
+  :ensure t
+  :bind (("C-x d" . dirvish))
+  ;:custom
+  ;(dirvish-vipsthumbnail-program "/opt/homebrew/bin/vipsthumbnail")
+  ;(dirvish-ffmpegthumbnailer-program "/opt/homebrew/bin/ffmpegthumbnailer")
+  :config
+  (dirvish-override-dired-mode 1))
 
 ;; ============ 项目管理 ============
 (use-package projectile
