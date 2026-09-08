@@ -6,5 +6,9 @@
 !.gitignore
 !README.md
 !keymaps.org
+
 !scripts/
 !scripts/setup-macos-emacs-daemon.fish
+
+!assets/
+!assets/**

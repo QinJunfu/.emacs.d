@@ -57,6 +57,9 @@
 (use-package dashboard
   :ensure t
   :config
+  (setq dashboard-startup-banner
+        (expand-file-name "assets/marivector.png" user-emacs-directory)) ; This picture come from: https://github.com/snackon/Witchmacs
+  (setq dashboard-image-banner-max-width 300)
   (dashboard-setup-startup-hook)
   (setq dashboard-items '((recents . 10)
                           (projects . 10)
