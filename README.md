@@ -128,3 +128,6 @@ touch ~/org/tasks.org
 cd ~/.emacs.d
 git pull
 ```
+
+## 教程推荐
+https://book.emacs-china.org
