@@ -56,8 +56,8 @@
      default))
  '(package-selected-packages
    '(aidermacs amx company counsel-projectile dashboard docker flycheck
-	       google-this graphviz-dot-mode lsp-ivy lsp-treemacs
-	       lsp-ui magit mwim nix-mode org-re-reveal
+	       google-this graphviz-dot-mode lsp-ivy lsp-metals
+	       lsp-treemacs lsp-ui magit mwim nix-mode org-re-reveal
 	       org-super-agenda reformatter rustic smart-mode-line tp
 	       treemacs-projectile undo-tree)))
 (custom-set-faces

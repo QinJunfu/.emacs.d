@@ -45,7 +45,7 @@
 (use-package avy
   :ensure t
   :bind
-  (("C-j" . avy-goto-char-2)))
+  (("C-c j" . avy-goto-char-2)))
 
 (use-package undo-tree
   :ensure t
