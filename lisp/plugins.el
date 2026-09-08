@@ -65,8 +65,15 @@
   (setq dashboard-projects-backend 'projectile)
   (setq dashboard-projects-show-base t))
 
+(use-package nerd-icons
+  :ensure t
+  :demand t
+  :custom
+  (nerd-icons-font-family "JetBrainsMono Nerd Font Mono"))
+
 (use-package doom-modeline
   :ensure t
+  :after nerd-icons
   :init (doom-modeline-mode 1))
 
 (use-package which-key
