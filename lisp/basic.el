@@ -20,10 +20,13 @@
 (setq display-line-numbers-type 'relative)   ; （可选）显示相对行号
 (add-to-list 'default-frame-alist '(width . 90))  ; （可选）设定启动图形界面时的初始 Frame 宽度（字符数）
 (add-to-list 'default-frame-alist '(height . 55)) ; （可选）设定启动图形界面时的初始 Frame 高度（字符数）
+(fset 'yes-or-no-p 'y-or-n-p) ; 每一次当 Emacs 需要与你确认某个命令时需要输入 (yes or no) 比较麻烦，所有我们可 以使用下面的代码，设置一个别名将其简化为只输入 (y or n) 。
 
-(global-set-key (kbd "C-j") nil) ; 取消C-j按键绑定
-
-(load-theme 'modus-vivendi-tritanopia t) ; 设置主题
+; (load-theme 'modus-vivendi-tritanopia t) ; 设置主题
+(unless (package-installed-p 'monokai-theme)
+  (package-refresh-contents)
+  (package-install 'monokai-theme))
+(load-theme 'monokai t)
 
 (provide 'basic)
 

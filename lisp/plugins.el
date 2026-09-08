@@ -65,9 +65,9 @@
   (setq dashboard-projects-backend 'projectile)
   (setq dashboard-projects-show-base t))
 
-(use-package smart-mode-line
+(use-package doom-modeline
   :ensure t
-  :init (sml/setup))
+  :init (doom-modeline-mode 1))
 
 (use-package which-key
   :ensure t
@@ -107,8 +107,13 @@
 
 ;; ============ 版本控制 ============
 ; Use C-x g to call
+(use-package compat
+  :ensure t
+  :demand t)
+
 (use-package magit
-  :ensure t)
+  :ensure t
+  :after compat)
 
 ;; ============ 代码检查 ============
 (use-package flycheck

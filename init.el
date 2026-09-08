@@ -27,7 +27,6 @@
             (lambda () (setq gc-cons-threshold normal-gc-cons-threshold))))
 
 ;; Set MELPA
-
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (add-to-list 'package-archives '("gnu"   . "http://elpa.gnu.org/packages/") t)
@@ -55,9 +54,10 @@
      "45631691477ddee3df12013e718689dafa607771e7fd37ebc6c6eb9529a8ede5"
      default))
  '(package-selected-packages
-   '(aidermacs amx company counsel-projectile dashboard docker flycheck
-	       google-this graphviz-dot-mode lsp-ivy lsp-metals
-	       lsp-treemacs lsp-ui magit mwim nix-mode org-re-reveal
+   '(aidermacs amx company counsel-projectile dashboard docker
+	       doom-modeline flycheck google-this graphviz-dot-mode
+	       lsp-ivy lsp-metals lsp-treemacs lsp-ui magit
+	       monokai-theme mood-line mwim nix-mode org-re-reveal
 	       org-super-agenda reformatter rustic smart-mode-line tp
 	       treemacs-projectile undo-tree)))
 (custom-set-faces
